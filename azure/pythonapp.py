@@ -1,34 +1,17 @@
 import azure.functions as func
-import json
+import random
 
-def process_data(data):
-    # Process the incoming data (example: calculate the sum of two numbers)
-    result = data['number1'] + data['number2']
-    return result
+# Hardcoded minimum and maximum values
+MIN_VALUE = 0
+MAX_VALUE = 100
+
+def generate_random_number():
+    return random.randint(MIN_VALUE, MAX_VALUE)
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
-    try:
-        req_body = req.get_json()
-    except ValueError:
-        return func.HttpResponse(
-            "Invalid JSON payload",
-            status_code=400
-        )
-
-    if 'number1' not in req_body or 'number2' not in req_body:
-        return func.HttpResponse(
-            "Please provide 'number1' and 'number2' in the JSON payload",
-            status_code=400
-        )
-
-    result = process_data(req_body)
-
-    response_data = {
-        "result": result
-    }
+    random_number = generate_random_number()
 
     return func.HttpResponse(
-        json.dumps(response_data),
-        status_code=200,
-        mimetype="application/json"
+        f"Random number between {MIN_VALUE} and {MAX_VALUE}: {random_number}",
+        status_code=200
     )
