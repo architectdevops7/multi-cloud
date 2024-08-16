@@ -13,10 +13,10 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',  'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest']
 
-# Store images in Google Artifact Registry 
-images:
-  - europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
-
 logsBucket: 'gs://codebuildartifacts/'
 options:
   logging: GCS_ONLY
+
+# Store images in Google Artifact Registry 
+images:
+  - europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
