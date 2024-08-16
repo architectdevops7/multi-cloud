@@ -29,4 +29,4 @@ RUN cp target/*.war /opt/tomcat/webapps/
 # COPY conf/context.xml /opt/tomcat/webapps/host-manager/META-INF/
 
 # Expose port 8080
-EXPOSE 8080
+EXPOSE 80
