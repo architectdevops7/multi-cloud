@@ -1,13 +1,16 @@
 steps:
-- name: 'gcr.io/javaapp'
-  args: ['build', '-t', 'gcr.io/first-parser-427213-r4/javaapp:latest', '-t', 'gcr.io/first-parser-427213-r4/javaapp:$COMMIT_SHA', '-t', 'gcr.io/first-parser-427213-r4/javaappyapp:$BUILD_ID', '.']
-  id: 'build-image-javaapp'
-  waitFor: ['-']
+# Step 1: Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/first-parser-427213-r4/javaapp:latest', '.']
+
+# Step 2: Push the Docker image to Google Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/first-parser-427213-r4/javaapp:latest']
+
 logsBucket: 'gs://codebuildartifacts/'
 options:
   logging: CLOUD_LOGGING_ONLY
+
 images:
 - 'gcr.io/first-parser-427213-r4/javaapp:latest'
-- 'gcr.io/first-parser-427213-r4/javaapp:$COMMIT_SHA'
-- 'gcr.io/first-parser-427213-r4/javaapp:$BUILD_ID'
 
