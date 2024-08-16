@@ -7,3 +7,7 @@ steps:
 
 images:
   - 'gcr.io/first-parser-427213-r4/javaapp:latest'
+
+logsBucket: 'gs://codebuildartifacts/'
+options:
+  logging: CLOUD_LOGGING_ONLY
