@@ -17,9 +17,9 @@ RUN mvn package -DskipTests
 
 # Install Tomcat
 RUN mkdir /opt/tomcat
-RUN wget -O /tmp/tomcat.tar.gz https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.91/bin/apache-tomcat-9.0.91.tar.gz
+RUN wget -O /tmp/tomcat.tar.gz https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.tar.gz
 RUN cd /tmp && tar -xvzf tomcat.tar.gz
-RUN cp -Rv /tmp/apache-tomcat-9.0.91/* /opt/tomcat/
+RUN cp -Rv /tmp/apache-tomcat-9.0.93/* /opt/tomcat/
 # Copy WAR file
 RUN cp target/*.war /opt/tomcat/webapps/
 #COPY --from=0 /app/target/*.war /opt/tomcat/webapps/
