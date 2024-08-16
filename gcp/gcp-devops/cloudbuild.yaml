@@ -15,3 +15,7 @@ steps:
 # Store images in Google Artifact Registry 
 images:
   - europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
+
+logsBucket: 'gs://codebuildartifacts/'
+options:
+  logging: GCS_ONLY
