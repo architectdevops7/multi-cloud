@@ -13,6 +13,16 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',  'gcr.io/first-parser-427213-r4/javaapp:latest']
 
+  # Step 3: Deploy to Google Cloud Run
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [
+            'run', 'deploy', 'javaapp',  # Name of the Cloud Run service
+            '--image', 'gcr.io/first-parser-427213-r4/javaapp:latest',  # Image to deploy
+            '--region', 'us-central1',  # Change to your desired region
+            '--platform', 'managed',  # Use managed Cloud Run
+            '--allow-unauthenticated'  # Optional: Allows public access
+          ]
+
 logsBucket: 'gs://codebuildartifacts/'
 options:
   logging: GCS_ONLY
