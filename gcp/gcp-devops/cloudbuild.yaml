@@ -4,7 +4,7 @@ steps:
     args: [
             'build',
             '-t',
-            'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest',
+            'gcr.io/europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest',
             '-f', 'gcp/gcp-devops/Dockerfile', # Specify the path to the Dockerfile
             'gcp/gcp-devops' # Specify the build context
           ]
@@ -19,4 +19,4 @@ options:
 
 # Store images in Google Artifact Registry 
 images:
-  - gcr.io/europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
+  - 'gcr.io/europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest'
