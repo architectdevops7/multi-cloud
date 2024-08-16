@@ -11,7 +11,7 @@ steps:
 
   # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push',  'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest']
+    args: ['push',  'gcr.io/europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest']
 
 logsBucket: 'gs://codebuildartifacts/'
 options:
@@ -19,4 +19,4 @@ options:
 
 # Store images in Google Artifact Registry 
 images:
-  - europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
+  - gcr.io/europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
