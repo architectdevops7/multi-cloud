@@ -1,13 +1,13 @@
 steps:
 - name: 'gcr.io/javaapp'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/javaapp:latest', '-t', 'gcr.io/$PROJECT_ID/javaapp:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/javaappyapp:$BUILD_ID', '.']
+  args: ['build', '-t', 'gcr.io/first-parser-427213-r4/javaapp:latest', '-t', 'gcr.io/first-parser-427213-r4/javaapp:$COMMIT_SHA', '-t', 'gcr.io/first-parser-427213-r4/javaappyapp:$BUILD_ID', '.']
   id: 'build-image-javaapp'
   waitFor: ['-']
-logsBucket: 'gs://codebuildartifacts'
+logsBucket: 'gs://codebuildartifacts/'
 options:
   logging: CLOUD_LOGGING_ONLY
 images:
-- 'gcr.io/$PROJECT_ID/javaapp:latest'
-- 'gcr.io/$PROJECT_ID/javaapp:$COMMIT_SHA'
-- 'gcr.io/$PROJECT_ID/javaapp:$BUILD_ID'
+- 'gcr.io/first-parser-427213-r4/javaapp:latest'
+- 'gcr.io/first-parser-427213-r4/javaapp:$COMMIT_SHA'
+- 'gcr.io/first-parser-427213-r4/javaapp:$BUILD_ID'
 
