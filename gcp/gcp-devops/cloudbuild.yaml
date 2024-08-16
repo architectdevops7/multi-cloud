@@ -1,5 +1,5 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
+- name: 'gcr.io/javaapp'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/javaapp:latest', '-t', 'gcr.io/$PROJECT_ID/javaapp:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/javaappyapp:$BUILD_ID', '.']
   id: 'build-image-javaapp'
   waitFor: ['-']
