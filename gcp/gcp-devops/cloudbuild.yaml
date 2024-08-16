@@ -1,15 +1,9 @@
 steps:
-# Step 1: Build the Docker image
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/first-parser-427213-r4/javaapp:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/first-parser-427213-r4/javaapp:latest', '.']
 
-# Step 2: Push the Docker image to Google Container Registry
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/first-parser-427213-r4/javaapp:latest']
-
-options:
-  logging: NONE
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/first-parser-427213-r4/javaapp:latest']
 
 images:
-- 'gcr.io/first-parser-427213-r4/javaapp:latest'
-
+  - 'gcr.io/first-parser-427213-r4/javaapp:latest'
