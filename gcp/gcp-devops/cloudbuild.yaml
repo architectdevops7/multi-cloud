@@ -5,7 +5,8 @@ steps:
             'build',
             '-t',
             'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest',
-            '.'
+            '-f', 'gcp/gcp-devops/Dockerfile', # Specify the path to the Dockerfile
+            'gcp/gcp-devops' # Specify the build context
           ]
 
   # Docker push to Google Artifact Registry
