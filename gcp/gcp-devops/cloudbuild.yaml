@@ -4,7 +4,7 @@ steps:
     args: [
             'build',
             '-t',
-            'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest'
+            'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest',
             '.'
           ]
 
