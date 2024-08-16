@@ -1,13 +1,17 @@
 steps:
+  # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/first-parser-427213-r4/javaapp:latest', '.']
+    args: [
+            'build',
+            '-t',
+            'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest'
+            '.'
+          ]
 
+  # Docker push to Google Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/first-parser-427213-r4/javaapp:latest']
+    args: ['push',  'europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest']
 
+# Store images in Google Artifact Registry 
 images:
-  - 'gcr.io/first-parser-427213-r4/javaapp:latest'
-
-logsBucket: 'gs://codebuildartifacts/'
-options:
-  logging: CLOUD_LOGGING_ONLY
+  - europe-west1-docker.pkg.dev/first-parser-427213-r4/javaapp:latest
