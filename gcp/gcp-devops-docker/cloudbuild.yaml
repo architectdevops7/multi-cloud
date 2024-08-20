@@ -23,15 +23,6 @@ steps:
             '--allow-unauthenticated',  # Optional: Allows public access
             '--port', '3000'
           ]
-  # Allow unauthenticated invocations
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-            'run', 'services', 'add-iam-policy-binding', 'nodeapp',
-            '--region', 'australia-southeast1',
-            '--member=allUsers',
-            '--role=roles/run.invoker',
-            '--platform', 'managed'
-          ]
           
 logsBucket: 'gs://codebuildartifacts/'
 options:
