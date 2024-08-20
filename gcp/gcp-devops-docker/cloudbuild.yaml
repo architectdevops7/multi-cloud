@@ -14,14 +14,15 @@ steps:
     args: ['push',  'gcr.io/first-parser-427213-r4/nodeapp:latest']
 
   # # Deploy to Google Cloud Run
-  # - name: 'gcr.io/cloud-builders/gcloud'
-  #   args: [
-  #           'run', 'deploy', 'nodeapp',  # Name of the Cloud Run service
-  #           '--image', 'gcr.io/first-parser-427213-r4/nodeapp:latest',  # Image to deploy
-  #           '--region', 'us-central1',  # Change to your desired region
-  #           '--platform', 'managed',  # Use managed Cloud Run
-  #           '--allow-unauthenticated'  # Optional: Allows public access
-  #         ]
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [
+            'run', 'deploy', 'nodeapp',  # Name of the Cloud Run service
+            '--image', 'gcr.io/first-parser-427213-r4/nodeapp:latest',  # Image to deploy
+            '--region', 'australia-southeast1',  # Change to your desired region
+            '--platform', 'managed',  # Use managed Cloud Run
+            '--allow-unauthenticated',  # Optional: Allows public access
+            '--port', '3000'
+          ]
 
 logsBucket: 'gs://codebuildartifacts/'
 options:
