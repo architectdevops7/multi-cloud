@@ -15,12 +15,14 @@ steps:
 
   # Configure kubectl with GKE creds
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [
-            'container', 'clusters', 'get-credentials',
-            'upgrad',
-            '--zone', 'us-central1-c'
-          ]
-  
+    entrypoint: 'bash'
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=upgrad'
+    args: 
+      - 'c'
+      - |
+        gcloud container clusters get-credentials $CLOUDSDK_CONTAINER_CLUSTER --zone $CLOUDSDK_COMPUTE_ZONE
 
   # # Deploy to GKE
   - name: 'gcr.io/cloud-builders/kubectl'
