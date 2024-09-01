@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+
+  <!-- Global Server Configuration -->
+  <Service name="Catalina">
+
+    <!-- Connector Configuration -->
+    <Connector port="8080" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" />
+
+    <!-- Define a virtual host -->
+    <Engine name="Catalina" defaultHost="localhost">
+
+      <Host name="localhost"  appBase="webapps"
+            unpackWARs="true" autoDeploy="true">
+
+        <!-- Define the context path for web applications -->
+        <Context path="/" docBase="ROOT" />
+
+      </Host>
+
+    </Engine>
+
+  </Service>
+
+</Server>
