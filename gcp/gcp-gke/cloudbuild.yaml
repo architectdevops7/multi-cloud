@@ -13,15 +13,21 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push',  'gcr.io/first-parser-427213-r4/nodeapp:latest']
 
-  # # Deploy to Google Cloud Run
+  # Configure kubectl with GKE creds
   - name: 'gcr.io/cloud-builders/gcloud'
     args: [
-            'run', 'deploy', 'nodeapp',  # Name of the Cloud Run service
-            '--image', 'gcr.io/first-parser-427213-r4/nodeapp:latest',  # Image to deploy
-            '--region', 'australia-southeast1',  # Change to your desired region
-            '--platform', 'managed',  # Use managed Cloud Run
-            '--allow-unauthenticated',  # Optional: Allows public access
-            '--port', '3000'
+            'container', 'clusters', 'get-credentials',
+            'upgrad',
+            '--zone', 'us-central1-c'
+          ]
+  
+
+  # # Deploy to GKE
+  - name: 'gcr.io/cloud-builders/kubectl'
+    args: [
+            'set', 'image',
+            'deployment/nodeapp-deployment',
+            'nodeapp-container=gcr.io/first-parser-427213-r4/nodeapp:latest'
           ]
           
 logsBucket: 'gs://codebuildartifacts/'
